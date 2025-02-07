@@ -2,7 +2,7 @@ This Repo is meant to document my Skills using Powershell for scripting and auto
 I've included tools built from scratch, automated shortcuts and scripts, made to do repetative tasks on my Personal PC.
 If you scroll through this, you'll see screenshots of all of the projects here in working.
 
-##################################################################################################################################################################################################
+######################################################################################
 Job Searching Automation: 
 My fingers were getting tired typing my info into job search websites, so I made a couple Powershell and ahk scripts to save 90% of my time applying for cool jobs.
 1. Open all the job sites
