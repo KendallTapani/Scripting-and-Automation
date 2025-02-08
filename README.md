@@ -1,4 +1,4 @@
-# Personal PowerShell Portfolio
+# Scripting and Automation
 
 This Repo is meant to document my Skills using Powershell for scripting and automation. I've included tools built from scratch, automated shortcuts and scripts, made to do repetitive tasks on my Personal PC. If you scroll through this, you'll see screenshots of all the projects here in working.
 
