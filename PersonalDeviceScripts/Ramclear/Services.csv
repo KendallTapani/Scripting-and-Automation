@@ -1,0 +1,11 @@
+Name,Status
+WinDefend,Running
+WdNisSvc,Running
+wuauserv,Running
+VSS,Running
+Spooler,Stopped
+XblAuthManager,Stopped
+XblGameSave,Stopped
+XboxGipSvc,Stopped
+XboxNetApiSvc,Stopped
+Steam Client Service,Stopped
