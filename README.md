@@ -15,6 +15,12 @@ Using my Virtual system on VMware, I am integrating the following powershell scr
 - Network and firewall configuration management
 - Snapshot management with the powershell and VMware integration
 
+## Personal Device Scripting
+
+Here is a list of scripts on my personal computer:
+1. Ram clear:
+When I need to run a bunch of VMs on my laptop, I use a shortcut to clear all noncritical processes and services, usually freeing up a couple extra GBs of ram.
+Also works for better gaming performance.
 
 ## Job Searching Automation
 
