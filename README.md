@@ -18,10 +18,10 @@ Using my Virtual system on VMware, I am integrating the following powershell scr
 ## Personal Device Scripting
 
 Here is a list of scripts on my personal computer:
-1. Ram clear:
+1. Ram clear: 
 When I need to run a bunch of VMs on my laptop, I use a shortcut to clear all noncritical processes and services, usually freeing up a couple extra GBs of ram.
 Also works for better gaming performance.
-2. Full Device Services Control
+2. Full Device Services Control: 
 This is a csv powershell system that manages all the services on my device. Certain services can't start at all, some can be cleared with ramclear, and I am notifed in the logs when new services are added to the system.
 
 ## Job Searching Automation
