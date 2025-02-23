@@ -1,6 +1,0 @@
-Service : wuauserv is currently Stopped, and should be Running
-Action was Successful, wuauserv is now Running
-Service : WSearch is currently Running, and should be Stopped
-Action aint working,  is still Running
-Service : SXboxNetApiSvc is currently , and should be Stopped
-Action aint working,  is still 

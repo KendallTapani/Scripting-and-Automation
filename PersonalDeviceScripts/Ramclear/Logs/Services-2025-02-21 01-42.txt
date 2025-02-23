@@ -1,2 +1,0 @@
-Service : Steam Client Service is currently Running, and should be Stopped
-Action was Successful, Steam Client Service is now Stopped
