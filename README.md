@@ -23,7 +23,7 @@ When I need to run a bunch of VMs on my laptop, I use a shortcut to clear all no
 Also works for better gaming performance.
 
 
-## Job Searching Automation
+### Job Searching Automation
 
 My fingers were getting tired typing my info into job search websites, so I made a couple Powershell and ahk scripts to save 90% of my time applying for cool jobs. Heres what all the files in the JobSearch folder do..
 
