@@ -1,6 +1,6 @@
 # Scripting and Automation
 
-This Repo is meant to document my Skills using Powershell for scripting and automation. I've included tools built from scratch, automated shortcuts and scripts, made to do repetitive tasks on my Personal PC. If you scroll through this, you'll see the various projects I'm using.
+This Repo is meant to document my Skills using Powershell for scripting and automation.
 
 ## *** Sysadmin Scripting with python
 Using my virtual system on VMware, I'm creating python scripts to automate the following:
@@ -16,8 +16,8 @@ Using my Virtual system on VMware, I am integrating the following powershell scr
 - Snapshot management with the powershell and VMware integration
 
 ## Personal Device Scripting
-
 Here is a list of scripts on my personal computer:
+<br/>
 #### 1. Ram clear: 
 When I need to run a bunch of VMs on my laptop, I use a shortcut to clear all noncritical processes and services, usually freeing up a couple extra GBs of ram.
 Also works for better gaming performance.
