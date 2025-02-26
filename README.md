@@ -24,6 +24,6 @@ Also works for better gaming performance.
 
 
 #### 2. Job Searching Automation
-My fingers were getting tired typing my info into job search websites, so I made a couple Powershell and ahk scripts to save 90% of my time applying for cool jobs.
+My fingers were getting tired typing my info into job search websites, so I made a couple Powershell and ahk scripts to save time.
 <br/>
-Opens all the relevant job sites I use to apply; Opens my email, starts writing a new email, pastes a subject and template; pastes my personal info into the site, pulling from a txt file.
+Opens all the relevant job sites I use to apply; binds my personal info to hotkeys, pulling from a txt file ; Opens a new email, pastes a subject and message template
