@@ -2,6 +2,12 @@
 
 This Repo is meant to document my Skills using Powershell for scripting and automation.
 
+## Active Directory Scripting
+- Create Users: Create users according to department, role, name, etc.
+- Device Connection Status: Check and log 
+- Active Directory system monitoring
+- Group-Policy-Management
+
 ## *** Sysadmin Scripting with python
 Using my virtual system on VMware, I'm creating python scripts to automate the following:
 - System Diagnostic monitoring, including resource consumption and log monitoring, creating alerts for any suspicious events or trends.
