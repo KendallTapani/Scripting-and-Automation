@@ -19,7 +19,6 @@ Streamlines the job application process through:
 - Data pulled from secure text files
 
 ### Utility Scripts
-- `PI.ps1`: PowerShell script for system information and utilities
 - `TestAHKScripts.ps1`: Run in Task Scheduler to open AutoHotkey scripts on login
 
 ## Requirements
