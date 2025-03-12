@@ -39,6 +39,12 @@ Tools for managing computer accounts:
 - Administrative permissions in your AD environment
 - Windows Remote Management (WinRM) enabled for remote operations
 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
 ## User Management Scripts
 
 ### User Onboarding
