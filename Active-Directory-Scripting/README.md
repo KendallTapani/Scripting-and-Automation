@@ -4,25 +4,40 @@ A comprehensive collection of PowerShell scripts for managing and automating Act
 
 ## Directory Structure
 
-### User Management
-Scripts for managing user accounts
+### User Management [![User Management](https://img.shields.io/badge/📁_User_Management-4A154B?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/User-Management)
+Scripts for managing user accounts, including:
+- User creation and deletion
+- Password management
+- Account status monitoring
+- Bulk user operations
+- OU management
 
-### Group Policy Management
-Tools for managing AD groups and policies
+### Group Policy Management [![Group Policy](https://img.shields.io/badge/📁_Group_Policy_Management-4A154B?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/Group-Policy-Management)
+Tools for managing AD groups and policies:
+- Group membership management
+- Security group auditing
+- Distribution list automation
+- Policy deployment and reporting
 
-### Security and Compliance
-Scripts focused on maintaining AD security
+### Security and Compliance [![Security](https://img.shields.io/badge/📁_Security_&_Compliance-4A154B?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/Security-and-Compliance)
+Scripts focused on maintaining AD security:
+- Account lockout monitoring
+- Permission auditing
+- Security group management
+- Compliance reporting
 
-### Computer Management
-Tools for managing computer accounts
+### Computer Management [![Computer](https://img.shields.io/badge/📁_Computer_Management-4A154B?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/Computer-Management)
+Tools for managing computer accounts:
+- Hardware/software inventory
+- Stale account cleanup
+- OU organization
+- System health monitoring
 
-
-
-
-<br/>
-<br/>
-<br/>
-<br/>
+## Requirements
+- PowerShell 5.1 or higher
+- Active Directory PowerShell module
+- Administrative permissions in your AD environment
+- Windows Remote Management (WinRM) enabled for remote operations
 
 ## User Management Scripts
 
