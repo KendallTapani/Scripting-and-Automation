@@ -14,7 +14,7 @@ A comprehensive inventory tool with the following features:
 - Automatic report organization
 
 <div style="display: flex; align-items: flex-start;">
-<img src="Hardware-Software-Inventory-Report/image1.png" height="150" width="auto" alt="Inventory Tool Menu"/>
+<img src="Hardware-Software-Inventory-Report/image1.png" height="80" width="auto" alt="Inventory Tool Menu"/>
 <img src="Hardware-Software-Inventory-Report/image2.png" height="150" width="auto" alt="Generated Report"/>
 </div>
 
@@ -39,8 +39,6 @@ Identifies and manages inactive computer accounts:
 - Scheduled cleanup operations
 - Backup of removed accounts
 - Detailed cleanup reporting
-
-<img src="Stale-Computer-Cleanup/image.png" height="150" width="auto" alt="Cleanup Operation"/>
 
 ## Requirements
 - PowerShell 5.1 or higher
