@@ -68,7 +68,7 @@ function New-StandardUser {
             -AccountPassword $securePassword
 
         # Add to basic groups based on department
-        $basicGroups = @("_Users")
+        $basicGroups = @("Users")
         
         # Try to add to department group if it exists
         $deptGroup = "$($selectedOU.Name) Users"

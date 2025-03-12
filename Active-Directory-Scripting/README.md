@@ -1,73 +1,79 @@
-# Active Directory Scripting
+# Active Directory Management Scripts
 
-A comprehensive collection of PowerShell scripts for managing and automating Active Directory tasks in the kendalltapani.com domain. These scripts are designed to streamline administrative tasks and improve efficiency in AD environments.
+A comprehensive collection of PowerShell scripts for managing Active Directory environments.
 
-## Directory Structure
+## Navigation
+
+[![User Management](https://img.shields.io/badge/User%20Management-View%20Scripts-blue?style=for-the-badge)](User-Management/)
+[![Group Policy](https://img.shields.io/badge/Group%20Policy-View%20Scripts-green?style=for-the-badge)](Group-Policy/)
+[![Computer Management](https://img.shields.io/badge/Computer%20Management-View%20Scripts-orange?style=for-the-badge)](Computer-Management/)
+
+## Sections Overview
 
 ### User Management
-Scripts for managing user accounts:
-User creation and deletion, Password management, Account status monitoring, Bulk user operations, OU management
-
-[![User Management](https://img.shields.io/badge/📁_User_Management-FF4B4B?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/User-Management)
+<div style="display: flex; align-items: flex-start;">
+<img src="User-Management/User-Onboarding/image1.png" height="300" width="auto" alt="User Onboarding"/> <img src="User-Management/User-Onboarding/image2.png" height="300" width="auto" alt="User Creation"/>
+</div>
+- **Account Creation**: Automates the process of creating new user accounts with standardized attributes
+- **Account Termination**: Handles the secure deactivation and cleanup of user accounts
+- **Password Management**: Tools for password resets, expiration management, and complexity verification
+- **Bulk Operations**: Scripts for performing actions on multiple user accounts simultaneously
+- **Reporting**: Generate detailed reports on user account status, permissions, and activities
 
 ### Group Policy Management
-Tools for managing AD groups and policies:
-Group membership management, Security group auditing, Distribution list automation, Policy deployment and reporting
-
-[![Group Policy](https://img.shields.io/badge/📁_Group_Policy_Management-4169E1?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/Group-Policy-Management)
-
-### Security and Compliance
-Scripts focused on maintaining AD security:
-Account lockout monitoring, Permission auditing, Security group management, Compliance reporting
-
-[![Security](https://img.shields.io/badge/📁_Security_&_Compliance-40B982?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/Security-and-Compliance)
+<div style="display: flex; align-items: flex-start;">
+<img src="Group-Policy/Group-Policy-Management/image1.png" height="300" width="auto" alt="GPO Management"/> <img src="Group-Policy/Group-Policy-Management/image2.png" height="300" width="auto" alt="GPO Settings"/>
+</div>
+- **GPO Creation**: Templates and scripts for creating standardized Group Policy Objects
+- **Policy Deployment**: Automate the process of linking and applying GPOs to OUs
+- **Backup and Restore**: Tools for backing up and restoring Group Policy configurations
+- **Health Checks**: Scripts to verify GPO settings and identify potential issues
+- **Documentation**: Generate comprehensive reports of GPO settings and assignments
 
 ### Computer Management
-Tools for managing computer accounts:
-Hardware/software inventory, Stale account cleanup, OU organization, System health monitoring
-
-[![Computer](https://img.shields.io/badge/📁_Computer_Management-9B59B6?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/Computer-Management)
-
-<br/>
-<br/>
-<br/>
-
-## User Management Scripts
-
-### User Onboarding
-A script for streamlined user creation in Active Directory with the following features:
-- Interactive menu system
-- Dynamic OU selection
-- Automatic username generation (first initial + last name)
-- Standard group assignments
-- Hardcoded initial password with forced change at first login
-- 30-day onboarding history tracking
-
 <div style="display: flex; align-items: flex-start;">
-<img src="User-Management/User-Onboarding/image1.png" height="300" width="auto" alt="User Onboarding Main Menu"/> <img src="User-Management/User-Onboarding/image2.png" height="300" width="auto" alt="Successful User Creation"/>
+<img src="Computer-Management/Hardware-Software-Inventory-Report/image.png" height="300" width="auto" alt="Hardware Inventory"/> <img src="Computer-Management/Computer-Account-Management/image.png" height="300" width="auto" alt="Account Management"/> <img src="Computer-Management/Computer-Inventory-Report/image.png" height="300" width="auto" alt="Inventory Report"/>
 </div>
+- **Hardware Inventory**: Collect detailed hardware specifications from domain computers
+- **Software Inventory**: Track installed software, versions, and installation dates
+- **Account Management**: Tools for managing computer accounts in Active Directory
+- **Health Monitoring**: Scripts to check computer status and identify issues
+- **Reporting**: Generate comprehensive inventory and status reports
 
-### User Offboarding
-Manages the secure deactivation of user accounts with features including:
-- Account disablement
-- Automated move to "Disabled Users" OU
-- 30-day retention before deletion
-- Scheduled cleanup of expired accounts
-- Detailed logging of offboarding actions
+## Requirements
 
-<div style="display: flex; align-items: flex-start;">
-<img src="User-Management/User-Offboarding/image1.png" height="300" width="auto" alt="User Offboarding Process"/> <img src="User-Management/User-Offboarding/image2.png" height="300" width="auto" alt="Account Movement"/> <img src="User-Management/User-Offboarding/image3.png" height="300" width="auto" alt="Cleanup Operation"/>
-</div>
+- Windows PowerShell 5.1 or later
+- Active Directory PowerShell module
+- Domain Administrator or appropriate delegated rights
+- Remote Server Administration Tools (RSAT)
 
-### Account Locking/Unlocking
-Manages user account states with enhanced features:
-- Account locking/unlocking
-- Remote computer reboot capability
-- Network connectivity validation
-- Detailed error handling and diagnostics
+## Installation
 
-<img src="User-Management/Locking-Unlocking-Accounts/image.png" height="300" width="auto" alt="Lock/Unlock Operation"/>
+1. Clone the repository:
+```powershell
+git clone https://github.com/yourusername/Active-Directory-Scripting.git
+```
+
+2. Navigate to the script directory:
+```powershell
+cd Active-Directory-Scripting
+```
+
+3. Run desired scripts with administrative privileges
+
+## Usage
+
+Each section contains its own README with specific usage instructions. Navigate to the desired section using the badges above.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 

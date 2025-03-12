@@ -12,6 +12,90 @@ function Test-AdminRights {
     return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+# Function to test WinRM connectivity
+function Test-WinRMConnection {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$ComputerName
+    )
+    
+    try {
+        Test-WSMan -ComputerName $ComputerName -ErrorAction Stop
+        return $true
+    }
+    catch {
+        return $false
+    }
+}
+
+# Function to enable WinRM
+function Enable-RemoteWinRM {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$ComputerName
+    )
+    
+    Write-Host "Attempting to enable WinRM on $ComputerName..."
+    
+    # Try using psexec to enable WinRM
+    $command = "psexec \\$ComputerName -s winrm quickconfig -quiet"
+    Write-Host "Running: $command"
+    Invoke-Expression $command
+    
+    # Wait a moment for the service to start
+    Start-Sleep -Seconds 5
+    
+    # Test connection again
+    return (Test-WinRMConnection -ComputerName $ComputerName)
+}
+
+# Function to manage local firewall
+function Set-LocalFirewall {
+    param (
+        [Parameter(Mandatory=$true)]
+        [bool]$Enable
+    )
+    
+    try {
+        $action = if ($Enable) { "enable" } else { "disable" }
+        Write-Host "Attempting to $action local firewall..."
+        
+        Set-NetFirewallProfile -Profile Domain,Private,Public -Enabled $Enable
+        Start-Sleep -Seconds 2
+        return $true
+    }
+    catch {
+        Write-Host "Failed to $action local firewall: $($_.Exception.Message)" -ForegroundColor Red
+        return $false
+    }
+}
+
+# Function to manage remote firewall
+function Set-RemoteFirewall {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$ComputerName,
+        [Parameter(Mandatory=$true)]
+        [bool]$Enable
+    )
+    
+    try {
+        $action = if ($Enable) { "enable" } else { "disable" }
+        Write-Host "Attempting to $action firewall on $ComputerName..."
+        
+        # Use direct command
+        $cmd = "netsh advfirewall set allprofiles state $action"
+        $result = Invoke-Command -ComputerName $ComputerName -ScriptBlock { param($command) Invoke-Expression $command } -ArgumentList $cmd -ErrorAction Stop
+        
+        Start-Sleep -Seconds 2
+        return $true
+    }
+    catch {
+        #Write-Host "Failed to $action firewall on $ComputerName: $($_.Exception.Message)" -ForegroundColor Red
+        return $false
+    }
+}
+
 # Function to get hardware information
 function Get-HardwareInfo {
     param (
@@ -19,19 +103,28 @@ function Get-HardwareInfo {
         [string]$ComputerName
     )
     try {
+        # Create CimSession with DCOM protocol
+        $sessionOption = New-CimSessionOption -Protocol Dcom
+        $session = New-CimSession -ComputerName $ComputerName -SessionOption $sessionOption -ErrorAction Stop
+
         $hardware = @{
             ComputerName = $ComputerName
-            Processor = (Get-CimInstance -ComputerName $ComputerName -ClassName Win32_Processor).Name
-            Memory = [math]::Round((Get-CimInstance -ComputerName $ComputerName -ClassName Win32_ComputerSystem).TotalPhysicalMemory/1GB, 2)
-            DiskSpace = Get-CimInstance -ComputerName $ComputerName -ClassName Win32_LogicalDisk | Where-Object {$_.DriveType -eq 3} | 
+            Processor = (Get-CimInstance -CimSession $session -ClassName Win32_Processor).Name
+            Memory = [math]::Round((Get-CimInstance -CimSession $session -ClassName Win32_ComputerSystem).TotalPhysicalMemory/1GB, 2)
+            DiskSpace = Get-CimInstance -CimSession $session -ClassName Win32_LogicalDisk | Where-Object {$_.DriveType -eq 3} | 
                 Select-Object DeviceID, @{N='Size(GB)';E={[math]::Round($_.Size/1GB, 2)}}, @{N='FreeSpace(GB)';E={[math]::Round($_.FreeSpace/1GB, 2)}}
-            NetworkAdapters = Get-CimInstance -ComputerName $ComputerName -ClassName Win32_NetworkAdapter | Where-Object {$_.PhysicalAdapter -eq $true} |
+            NetworkAdapters = Get-CimInstance -CimSession $session -ClassName Win32_NetworkAdapter | Where-Object {$_.PhysicalAdapter -eq $true} |
                 Select-Object Name, AdapterType, MACAddress
         }
+
+        Remove-CimSession -CimSession $session
         return $hardware
     }
     catch {
-        Write-Host "Error getting hardware info for $ComputerName`: $_" -ForegroundColor Red
+        $errorMsg = "Error getting hardware info for $ComputerName"
+        Write-Host $errorMsg -ForegroundColor Red
+        Write-Host $_.Exception.Message -ForegroundColor Red
+        Write-Host "Please check computer name and network connectivity" -ForegroundColor Yellow
         return $null
     }
 }
@@ -43,13 +136,19 @@ function Get-SoftwareInfo {
         [string]$ComputerName
     )
     try {
-        $software = Get-CimInstance -ComputerName $ComputerName -ClassName Win32_Product |
+        # Use CimSession for consistency
+        $sessionOption = New-CimSessionOption -Protocol Dcom
+        $session = New-CimSession -ComputerName $ComputerName -SessionOption $sessionOption -ErrorAction Stop
+
+        $software = Get-CimInstance -CimSession $session -ClassName Win32_Product |
             Select-Object Name, Version, Vendor, InstallDate |
             Sort-Object Name
+
+        Remove-CimSession -CimSession $session
         return $software
     }
     catch {
-        Write-Host "Error getting software info for $ComputerName`: $_" -ForegroundColor Red
+        Write-Host ("Error getting software info for {0}: {1}" -f $ComputerName, $_.Exception.Message) -ForegroundColor Red
         return $null
     }
 }

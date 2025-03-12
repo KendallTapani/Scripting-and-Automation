@@ -1,11 +1,53 @@
 # Computer OU Organization Script
 # This script helps organize computer accounts into appropriate OUs based on criteria like department, location, or function
 
+# Import required module
+Import-Module ActiveDirectory
+
 # Function to validate admin rights
 function Test-AdminRights {
     $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
     $principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
     return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+# Function to verify OU exists
+function Test-OUExists {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$OUPath
+    )
+    try {
+        $null = Get-ADOrganizationalUnit -Identity $OUPath
+        return $true
+    }
+    catch {
+        return $false
+    }
+}
+
+# Function to create OU if it doesn't exist
+function New-OUIfNotExists {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$OUName,
+        [Parameter(Mandatory=$true)]
+        [string]$ParentPath
+    )
+    
+    $ouPath = "OU=$OUName,$ParentPath"
+    if (-not (Test-OUExists -OUPath $ouPath)) {
+        try {
+            New-ADOrganizationalUnit -Name $OUName -Path $ParentPath
+            Write-Host ("Created OU: {0}" -f $ouPath) -ForegroundColor Green
+            return $true
+        }
+        catch {
+            Write-Host ("Error creating OU {0}: {1}" -f $OUName, $_.Exception.Message) -ForegroundColor Red
+            return $false
+        }
+    }
+    return $true
 }
 
 # Function to get all computers and their properties
@@ -23,9 +65,22 @@ function Move-ComputerToOU {
         [string]$TargetOU
     )
     try {
+        # First verify the computer exists
         $computer = Get-ADComputer -Identity $ComputerName
+        if (-not $computer) {
+            Write-Host ("Computer {0} not found" -f $ComputerName) -ForegroundColor Red
+            return
+        }
+
+        # Verify target OU exists
+        if (-not (Test-OUExists -OUPath $TargetOU)) {
+            Write-Host ("Target OU {0} does not exist" -f $TargetOU) -ForegroundColor Red
+            return
+        }
+
+        # Move the computer
         Move-ADObject -Identity $computer.DistinguishedName -TargetPath $TargetOU
-        Write-Host "Successfully moved $ComputerName to $TargetOU" -ForegroundColor Green
+        Write-Host ("Successfully moved {0} to {1}" -f $ComputerName, $TargetOU) -ForegroundColor Green
     }
     catch {
         Write-Host ("Error moving {0}: {1}" -f $ComputerName, $_.Exception.Message) -ForegroundColor Red
@@ -38,11 +93,19 @@ if (-not (Test-AdminRights)) {
     exit
 }
 
-# Define OUs
+# Define domain
+$domainDN = (Get-ADDomain).DistinguishedName
+
+# Define OUs and ensure they exist
 $ouStructure = @{
-    "Workstations" = "OU=Workstations,DC=kendalltapani,DC=com"
-    "Servers" = "OU=Servers,DC=kendalltapani,DC=com"
-    "Legacy" = "OU=Legacy,DC=kendalltapani,DC=com"
+    "Workstations" = "OU=Workstations,$domainDN"
+    "Servers" = "OU=Servers,$domainDN"
+    "Legacy" = "OU=Legacy,$domainDN"
+}
+
+# Create base OUs if they don't exist
+foreach ($ou in $ouStructure.GetEnumerator()) {
+    New-OUIfNotExists -OUName $ou.Key -ParentPath $domainDN
 }
 
 # Create menu
@@ -68,10 +131,17 @@ do {
         }
         "2" {
             $computerName = Read-Host "Enter computer name"
-            Write-Host "Available OUs:"
+            Write-Host "`nAvailable OUs:"
             $ouStructure.GetEnumerator() | ForEach-Object { Write-Host "$($_.Key): $($_.Value)" }
-            $targetOU = Read-Host "Enter target OU path"
-            Move-ComputerToOU -ComputerName $computerName -TargetOU $targetOU
+            $targetOUKey = Read-Host "`nEnter OU name (e.g., Workstations, Servers, Legacy)"
+            
+            if ($ouStructure.ContainsKey($targetOUKey)) {
+                $targetOU = $ouStructure[$targetOUKey]
+                Move-ComputerToOU -ComputerName $computerName -TargetOU $targetOU
+            }
+            else {
+                Write-Host "Invalid OU selection. Please choose from the available OUs." -ForegroundColor Red
+            }
             pause
         }
         "3" {
@@ -92,14 +162,10 @@ do {
         }
         "4" {
             $ouName = Read-Host "Enter new OU name"
-            $ouPath = Read-Host "Enter parent OU path (e.g., DC=kendalltapani,DC=com)"
-            try {
-                New-ADOrganizationalUnit -Name $ouName -Path $ouPath
-                $ouStructure[$ouName] = "OU=$ouName,$ouPath"
-                Write-Host "OU created successfully" -ForegroundColor Green
-            }
-            catch {
-                Write-Host ("Error creating OU: {0}" -f $_.Exception.Message) -ForegroundColor Red
+            Write-Host "`nCurrent domain path: $domainDN"
+            $createOU = New-OUIfNotExists -OUName $ouName -ParentPath $domainDN
+            if ($createOU) {
+                $ouStructure[$ouName] = "OU=$ouName,$domainDN"
             }
             pause
         }
