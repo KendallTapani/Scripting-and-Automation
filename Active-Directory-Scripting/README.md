@@ -50,7 +50,9 @@ A script for streamlined user creation in Active Directory with the following fe
 - Hardcoded initial password with forced change at first login
 - 30-day onboarding history tracking
 
+<div style="display: flex; align-items: flex-start;">
 <img src="User-Management/User-Onboarding/image1.png" width="200" alt="User Onboarding Main Menu"/> <img src="User-Management/User-Onboarding/image2.png" width="200" alt="Successful User Creation"/>
+</div>
 
 ### User Offboarding
 Manages the secure deactivation of user accounts with features including:
@@ -60,7 +62,9 @@ Manages the secure deactivation of user accounts with features including:
 - Scheduled cleanup of expired accounts
 - Detailed logging of offboarding actions
 
+<div style="display: flex; align-items: flex-start;">
 <img src="User-Management/User-Offboarding/image1.png" width="200" alt="User Offboarding Process"/> <img src="User-Management/User-Offboarding/image2.png" width="200" alt="Account Movement"/> <img src="User-Management/User-Offboarding/image3.png" width="200" alt="Cleanup Operation"/>
+</div>
 
 ### Account Locking/Unlocking
 Manages user account states with enhanced features:
@@ -69,8 +73,8 @@ Manages user account states with enhanced features:
 - Network connectivity validation
 - Detailed error handling and diagnostics
 
-<img src="User-Management/Locking-Unlocking-Accounts/image.png" width="200" alt="Lock/Unlock Operation"/>
-
+<img src="User-Management/Locking-Unlocking-Accounts/image.png" width="250" alt="Lock/Unlock Operation"/>
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
+
