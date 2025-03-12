@@ -28,11 +28,9 @@ Hardware/software inventory, Stale account cleanup, OU organization, System heal
 
 [![Computer](https://img.shields.io/badge/📁_Computer_Management-9B59B6?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting/Computer-Management)
 
-## Requirements
-- PowerShell 5.1 or higher
-- Active Directory PowerShell module
-- Administrative permissions in your AD environment
-- Windows Remote Management (WinRM) enabled for remote operations
+<br/>
+<br/>
+<br/>
 
 ## User Management Scripts
 
