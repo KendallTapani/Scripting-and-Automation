@@ -1,20 +1,23 @@
 # Scripting and Automation Repository
 
-This repository contains various automation scripts and tools for both Active Directory management and personal device automation.
+A comprehensive collection of PowerShell scripts for automating various IT tasks and system management operations.
 
-## Sections
+## Repository Sections
 
 ### Active Directory Scripting
-A comprehensive collection of PowerShell scripts for managing and automating Active Directory tasks. Includes tools for user management, group policy, security compliance, and computer management. These scripts are designed to streamline common administrative tasks and improve efficiency in AD environments.
+Enterprise-level scripts for managing Active Directory infrastructure, including user management, group policies, security, and computer management.
 
-[View Active Directory Scripts →](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting)
+[![Active Directory Scripts](https://img.shields.io/badge/📁_Active_Directory_Scripts-4169E1?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Active-Directory-Scripting)
 
-### Personal Laptop Automation
-A collection of automation scripts designed for personal use, including system optimization and job search automation. Features tools for RAM optimization when running VMs or games, and automated job application processes to reduce repetitive tasks.
+### Personal Laptop Management
+Scripts for managing and maintaining personal laptop configurations and settings.
 
-[View Personal Laptop Scripts →](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Personal%20Laptop)
+[![Personal Laptop Scripts](https://img.shields.io/badge/📁_Personal_Laptop_Scripts-40B982?style=for-the-badge)](https://github.com/KendallTapani/Scripting-and-Automation/tree/main/Personal%20Laptop)
 
 ## Requirements
-
 - PowerShell 5.1 or higher
-- Specific requirements are listed in each section's README
+- Administrative privileges for system modifications
+- Specific module requirements listed in each section's README
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
