@@ -5,39 +5,18 @@ A comprehensive collection of PowerShell scripts for managing and automating Act
 ## Directory Structure
 
 ### User Management
-Scripts for managing user accounts, including:
-- User creation and deletion
-- Password management
-- Account status monitoring
-- Bulk user operations
-- OU management
+Scripts for managing user accounts
 
 ### Group Policy Management
-Tools for managing AD groups and policies:
-- Group membership management
-- Security group auditing
-- Distribution list automation
-- Policy deployment and reporting
+Tools for managing AD groups and policies
 
 ### Security and Compliance
-Scripts focused on maintaining AD security:
-- Account lockout monitoring
-- Permission auditing
-- Security group management
-- Compliance reporting
+Scripts focused on maintaining AD security
 
 ### Computer Management
-Tools for managing computer accounts:
-- Hardware/software inventory
-- Stale account cleanup
-- OU organization
-- System health monitoring
+Tools for managing computer accounts
 
-## Requirements
-- PowerShell 5.1 or higher
-- Active Directory PowerShell module
-- Administrative permissions in your AD environment
-- Windows Remote Management (WinRM) enabled for remote operations
+
 
 
 <br/>
