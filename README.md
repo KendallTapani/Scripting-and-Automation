@@ -1,6 +1,6 @@
 # Scripting and Automation Repository
 
-A comprehensive collection of PowerShell scripts for automating various IT tasks and system management operations.
+A comprehensive collection of PowerShell scripts for automating System Administration operations securely and efficiently.
 
 ## Repository Sections
 
