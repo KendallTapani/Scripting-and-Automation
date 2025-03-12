@@ -14,8 +14,8 @@ A comprehensive inventory tool with the following features:
 - Automatic report organization
 
 <div style="display: flex; align-items: flex-start;">
-<img src="Hardware-Software-Inventory-Report/image1.png" height="300" width="auto" alt="Inventory Tool Menu"/>
-<img src="Hardware-Software-Inventory-Report/image2.png" height="300" width="auto" alt="Generated Report"/>
+<img src="Hardware-Software-Inventory-Report/image1.png" height="150" width="auto" alt="Inventory Tool Menu"/>
+<img src="Hardware-Software-Inventory-Report/image2.png" height="150" width="auto" alt="Generated Report"/>
 </div>
 
 ### Computer Account Organization
@@ -27,9 +27,9 @@ Manages computer account placement in Active Directory:
 - Detailed move logging
 
 <div style="display: flex; align-items: flex-start;">
-<img src="Computer-OU-Organization/image1.png" height="300" width="auto" alt="Organization Tool"/>
-<img src="Computer-OU-Organization/image2.png" height="300" width="auto" alt="OU Structure"/>
-<img src="Computer-OU-Organization/image3.png" height="300" width="auto" alt="Move Operation"/>
+<img src="Computer-OU-Organization/image1.png" height="150" width="auto" alt="Organization Tool"/>
+<img src="Computer-OU-Organization/image2.png" height="150" width="auto" alt="OU Structure"/>
+<img src="Computer-OU-Organization/image3.png" height="150" width="auto" alt="Move Operation"/>
 </div>
 
 ### Stale Computer Cleanup
@@ -40,7 +40,7 @@ Identifies and manages inactive computer accounts:
 - Backup of removed accounts
 - Detailed cleanup reporting
 
-<img src="Stale-Computer-Cleanup/image.png" height="300" width="auto" alt="Cleanup Operation"/>
+<img src="Stale-Computer-Cleanup/image.png" height="150" width="auto" alt="Cleanup Operation"/>
 
 ## Requirements
 - PowerShell 5.1 or higher
