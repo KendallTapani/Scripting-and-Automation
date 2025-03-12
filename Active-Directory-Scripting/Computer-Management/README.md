@@ -1,95 +1,50 @@
 # Computer Management Scripts
 
-This section contains PowerShell scripts for managing computer accounts in Active Directory, including hardware inventory, software inventory, and computer account management.
+A collection of PowerShell scripts for managing Active Directory computer accounts in the kendalltapani.com domain. These scripts provide automated solutions for computer inventory, organization, and maintenance tasks.
 
-## Scripts Overview
+## Available Scripts
 
-### Hardware and Software Inventory Report
-![Hardware-Software-Inventory](Hardware-Software-Inventory-Report/image.png)
-- **Purpose**: Generates detailed reports of hardware and software inventory for domain computers
-- **Features**:
-  - Collects hardware information (CPU, Memory, Disk Space, Network Adapters)
-  - Gathers installed software details (Name, Version, Vendor, Install Date)
-  - Supports single computer or all domain computers scanning
-  - Generates HTML reports with formatted tables
-  - Uses CIM/WMI for reliable data collection
-  - Includes error handling and connectivity checks
+### Hardware and Software Inventory
+A comprehensive inventory tool with the following features:
+- Detailed hardware information collection
+- Software inventory with version tracking
+- HTML report generation
+- Single computer or domain-wide scanning
+- Network connectivity validation
+- Automatic report organization
 
-### Computer Account Management
-![Computer-Account-Management](Computer-Account-Management/image.png)
-- **Purpose**: Manages computer accounts in Active Directory
-- **Features**:
-  - Move computers between OUs
-  - Disable/Enable computer accounts
-  - Delete stale computer accounts
-  - Search and filter computer accounts
-  - Bulk operations support
-  - Automated OU creation if needed
+<div style="display: flex; align-items: flex-start;">
+<img src="Hardware-Software-Inventory-Report/image1.png" height="300" width="auto" alt="Inventory Tool Menu"/>
+<img src="Hardware-Software-Inventory-Report/image2.png" height="300" width="auto" alt="Generated Report"/>
+</div>
 
-### Computer Inventory Report
-![Computer-Inventory](Computer-Inventory-Report/image.png)
-- **Purpose**: Generates comprehensive inventory reports of computer accounts
-- **Features**:
-  - Lists all computer accounts in the domain
-  - Shows last logon time and account status
-  - Identifies stale accounts
-  - Exports to CSV for easy analysis
-  - Includes OU location information
-  - Supports custom filtering options
+### Computer Account Organization
+Manages computer account placement in Active Directory:
+- Dynamic OU structure creation
+- Automatic computer categorization
+- Bulk computer moves
+- Location-based organization
+- Detailed move logging
 
-## Usage Instructions
+<div style="display: flex; align-items: flex-start;">
+<img src="Computer-OU-Organization/image1.png" height="300" width="auto" alt="Organization Tool"/>
+<img src="Computer-OU-Organization/image2.png" height="300" width="auto" alt="OU Structure"/>
+<img src="Computer-OU-Organization/image3.png" height="300" width="auto" alt="Move Operation"/>
+</div>
 
-1. **Hardware and Software Inventory Report**:
-   ```powershell
-   # Run as administrator
-   .\Hardware-Software-Inventory-Report\Hardware-Software-Inventory.ps1
-   ```
-   - Select option 1 for single computer or 2 for all domain computers
-   - Reports are saved in C:\Reports directory
+### Stale Computer Cleanup
+Identifies and manages inactive computer accounts:
+- Automated stale account detection
+- Configurable inactivity thresholds
+- Scheduled cleanup operations
+- Backup of removed accounts
+- Detailed cleanup reporting
 
-2. **Computer Account Management**:
-   ```powershell
-   # Run as administrator
-   .\Computer-Account-Management\Manage-ComputerAccounts.ps1
-   ```
-   - Follow the interactive menu for various management options
-   - Supports bulk operations through CSV import
-
-3. **Computer Inventory Report**:
-   ```powershell
-   # Run as administrator
-   .\Computer-Inventory-Report\Computer-Inventory.ps1
-   ```
-   - Reports are generated in CSV format
-   - Use filters to focus on specific criteria
+<img src="Stale-Computer-Cleanup/image.png" height="300" width="auto" alt="Cleanup Operation"/>
 
 ## Requirements
-
-- Windows PowerShell 5.1 or later
+- PowerShell 5.1 or higher
 - Active Directory PowerShell module
-- Domain Administrator or appropriate delegated rights
-- Remote Server Administration Tools (RSAT)
-- WinRM enabled for remote management
-
-## Security Considerations
-
-- Run all scripts with appropriate administrative privileges
-- Review and test in a non-production environment first
-- Follow the principle of least privilege when delegating access
-- Monitor and audit script execution through PowerShell logging
-
-## Error Handling
-
-All scripts include comprehensive error handling for common scenarios:
-- Network connectivity issues
-- Permission problems
-- Resource availability
-- Invalid input validation
-
-## Logging
-
-Operations are logged with appropriate verbosity:
-- Success/failure status
-- Error messages with details
-- Operation timestamps
-- Affected objects 
+- Administrative permissions in your AD environment
+- Windows Remote Management (WinRM) enabled for remote operations
+- RSAT Tools installed for AD management 
